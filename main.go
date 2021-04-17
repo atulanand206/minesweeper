@@ -19,7 +19,6 @@ const (
 	contentTypeKey             = "content-type"
 	cors                       = "Access-Control-Allow-Origin"
 	contentTypeApplicationJson = "application/json"
-	htmlTemplatePath           = "game.html"
 )
 
 func main() {
@@ -31,7 +30,38 @@ func main() {
 func routes() *http.ServeMux {
 	router := http.NewServeMux()
 	router.HandleFunc("/game/new", http.HandlerFunc(newGameHandler))
+	router.HandleFunc("/game/save", http.HandlerFunc(saveGameHandler))
 	return router
+}
+
+type (
+	Config struct {
+		Row   int `json:"row"`
+		Col   int `json:"col"`
+		Mines int `json:"mines"`
+		Type  string `json:"name"`
+	}
+
+	Range struct {
+		Start time.Time `json:"start"`
+		End   time.Time `json:"end"`
+	}
+
+	Game struct {
+		Conf  Config  `json:"config"`
+		Times []Range `json:"times"`
+		Score int     `json:"score"`
+		Won   bool    `json:"won"`
+	}
+)
+
+func saveGameHandler(w http.ResponseWriter, r *http.Request) {
+	decoder := json.NewDecoder(r.Body)
+	var ob Game
+	err := decoder.Decode(&ob)
+	if err == nil {
+		fmt.Println(ob)
+	}
 }
 
 func newGameHandler(w http.ResponseWriter, r *http.Request) {
