@@ -62,6 +62,7 @@ func saveGameHandler(w http.ResponseWriter, r *http.Request) {
 	if err == nil {
 		fmt.Println(ob)
 	}
+	w.Header().Set(cors, "*")
 }
 
 func newGameHandler(w http.ResponseWriter, r *http.Request) {
