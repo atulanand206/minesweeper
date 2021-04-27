@@ -22,10 +22,12 @@ const (
 	contentTypeKey             = "content-type"
 	cors                       = "Access-Control-Allow-Origin"
 	contentTypeApplicationJson = "application/json"
+	kafkaTopic                 = "games"
+	kafkaBrokerId              = "localhost:19092"
 )
 
 func main() {
-	kafka.LoadPublisher("localhost:19092", "users", "0.0.0.0:9000")
+	kafka.LoadPublisher(kafkaBrokerId, kafkaTopic, "0.0.0.0:9000")
 	routes := routes()
 	handler := http.HandlerFunc(routes.ServeHTTP)
 	http.ListenAndServe(":5000", handler)
