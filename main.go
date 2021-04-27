@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"encoding/json"
 	"strconv"
+	"github.com/atulanand206/acquisition/cmd/kafka"
+	"log"
 )
 
 const (
@@ -22,6 +24,7 @@ const (
 )
 
 func main() {
+	kafka.LoadPublisher("localhost:19092", "users", "0.0.0.0:9000")
 	routes := routes()
 	handler := http.HandlerFunc(routes.ServeHTTP)
 	http.ListenAndServe(":5000", handler)
@@ -61,6 +64,10 @@ func saveGameHandler(w http.ResponseWriter, r *http.Request) {
 	err := decoder.Decode(&ob)
 	if err == nil {
 		fmt.Println(ob)
+	}
+	formInBytes, _ := json.Marshal(ob)
+	if err := kafka.Push(nil, formInBytes); err != nil {
+		log.Panic(err)
 	}
 	w.Header().Set(cors, "*")
 }
