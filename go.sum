@@ -7,6 +7,8 @@ github.com/atulanand206/acquisition v0.0.2 h1:GtzSgl+7IStUwkLeDhA3+rTcnB6XEvIHhI
 github.com/atulanand206/acquisition v0.0.2/go.mod h1:U+7IvdN4x5Vg65lijUyi+QJTlb08whYEwgkRF3iG1uI=
 github.com/atulanand206/acquisition v0.0.3 h1:FzAtySM/Nqqu9m7TTUikgU9VArQoMLqeDCBBKv7qR+E=
 github.com/atulanand206/acquisition v0.0.3/go.mod h1:U+7IvdN4x5Vg65lijUyi+QJTlb08whYEwgkRF3iG1uI=
+github.com/atulanand206/acquisition v0.0.4 h1:ldvZ7WOiP9FGhuDy8xMrzNujj+r3OaiTrzpqKjH77rs=
+github.com/atulanand206/acquisition v0.0.4/go.mod h1:U+7IvdN4x5Vg65lijUyi+QJTlb08whYEwgkRF3iG1uI=
 github.com/aws/aws-sdk-go v1.34.28 h1:sscPpn/Ns3i0F4HPEWAVcwdIRaZZCuL7llJ2/60yPIk=
 github.com/aws/aws-sdk-go v1.34.28/go.mod h1:H7NKnBqNVzoTJpGfLrQkkD+ytBA93eiDYi/+8rV9s48=
 github.com/bradfitz/gomemcache v0.0.0-20170208213004-1952afaa557d/go.mod h1:PmM6Mmwb0LSuEubjR8N7PtNe1KxZLtOUHtbeikc5h60=

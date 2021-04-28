@@ -10,6 +10,10 @@ import (
 	"github.com/atulanand206/acquisition/cmd/kafka"
 	"log"
 	"github.com/atulanand206/minesweeper/objects"
+	"github.com/atulanand206/acquisition/cmd/mongo"
+	"net/url"
+	"go.mongodb.org/mongo-driver/bson"
+	"context"
 )
 
 const (
@@ -24,9 +28,13 @@ const (
 	contentTypeApplicationJson = "application/json"
 	kafkaTopic                 = "games"
 	kafkaBrokerId              = "localhost:19092"
+	database                   = "minesweeper"
+	collection                 = "games"
+	mongoClientId              = "mongodb+srv://Anand:deathByChance@cluster0.x2q5g.mongodb.net/"
 )
 
 func main() {
+	mongo.ConfigureMongoClient(mongoClientId)
 	kafka.LoadPublisher(kafkaBrokerId, kafkaTopic, "0.0.0.0:9000")
 	routes := routes()
 	handler := http.HandlerFunc(routes.ServeHTTP)
@@ -37,7 +45,23 @@ func routes() *http.ServeMux {
 	router := http.NewServeMux()
 	router.HandleFunc("/game/new", http.HandlerFunc(newGameHandler))
 	router.HandleFunc("/game/save", http.HandlerFunc(saveGameHandler))
+	router.HandleFunc("/games", http.HandlerFunc(getGamesHandler))
 	return router
+}
+
+func getGamesHandler(w http.ResponseWriter, r *http.Request) {
+	values := r.URL.Query()
+	var response []objects.Game
+	score:= paramInt(values, "score", 30)
+	cursor := mongo.Find(database, collection, bson.M{ "score": score })
+	for cursor.Next(context.Background()) {
+		var game objects.Game
+		cursor.Decode(&game)
+		response = append(response, game)
+	}
+	w.Header().Set(cors, "*")
+	w.Header().Set(contentTypeKey, contentTypeApplicationJson)
+	json.NewEncoder(w).Encode(response)
 }
 
 func saveGameHandler(w http.ResponseWriter, r *http.Request) {
@@ -56,24 +80,23 @@ func saveGameHandler(w http.ResponseWriter, r *http.Request) {
 
 func newGameHandler(w http.ResponseWriter, r *http.Request) {
 	values := r.URL.Query()
-	rows := defaultRows
-	cols := defaultColumns
-	mins := defaultMines
-	if values.Get("rows") != "" {
-		rows, _ = strconv.Atoi(values.Get("rows"))
-	}
-	if values.Get("columns") != "" {
-		cols, _ = strconv.Atoi(values.Get("columns"))
-	}
-	if values.Get("mines") != "" {
-		mins, _ = strconv.Atoi(values.Get("mines"))
-	}
+	rows := paramInt(values, "rows", defaultRows)
+	cols := paramInt(values, "columns", defaultColumns)
+	mins := paramInt(values, "mines", defaultMines)
 	fmt.Println(values)
 	w.Header().Set(cors, "*")
 	w.Header().Set(contentTypeKey, contentTypeApplicationJson)
 	board := generateBoard(rows, cols, mins)
 	print2D(board)
 	json.NewEncoder(w).Encode(board)
+}
+
+func paramInt(values url.Values, key string, def int) int {
+	rows := def
+	if values.Get(key) != "" {
+		rows, _ = strconv.Atoi(values.Get(key))
+	}
+	return rows
 }
 
 const (
