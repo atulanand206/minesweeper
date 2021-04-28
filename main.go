@@ -52,8 +52,8 @@ func routes() *http.ServeMux {
 func getGamesHandler(w http.ResponseWriter, r *http.Request) {
 	values := r.URL.Query()
 	var response []objects.Game
-	score:= paramInt(values, "score", 30)
-	cursor := mongo.Find(database, collection, bson.M{ "score": score })
+	config:= paramString(values, "config", "Expert")
+	cursor := mongo.Find(database, collection, bson.M{ "config.name": config })
 	for cursor.Next(context.Background()) {
 		var game objects.Game
 		cursor.Decode(&game)
@@ -98,6 +98,15 @@ func paramInt(values url.Values, key string, def int) int {
 	}
 	return rows
 }
+
+func paramString(values url.Values, key string, def string) string {
+	rows := def
+	if values.Get(key) != "" {
+		rows = values.Get(key)
+	}
+	return rows
+}
+
 
 const (
 	mine  = "*"
