@@ -8,5 +8,8 @@ ADD . ${APP_HOME}
 WORKDIR ${APP_HOME}
 RUN go get -d -v ./...
 RUN go install -v ./...
+RUN go mod download
+RUN go mod vendor
+RUN go mod verify
 RUN go build
 CMD [ "go run main.go" ]
