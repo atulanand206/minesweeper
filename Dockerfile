@@ -2,9 +2,8 @@ FROM golang:1.15
 
 ENV GO111MODULE=on
 ENV GOFLAGS=-mod=vendor
-ENV GOPATH=/go
-ENV PATH=${PATH}:${GOPATH}
-ENV APP_HOME go/github.com/atulanand206/minesweeper
+ENV PATH=${PATH}:/go/src
+ENV APP_HOME go/src/github.com/atulanand206/minesweeper
 RUN mkdir -p ${APP_HOME}
 ADD . ${APP_HOME}
 WORKDIR ${APP_HOME}
