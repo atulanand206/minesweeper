@@ -47,7 +47,11 @@ func getGamesHandler(w http.ResponseWriter, r *http.Request) {
 	values := r.URL.Query()
 	var response []objects.Game
 	config := paramString(values, "config", "Expert")
-	cursor := mongo.Find(database, collection, bson.M{"config.name": config})
+	cursor, err := mongo.Find(database, collection, bson.M{"config.name": config})
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 	for cursor.Next(context.Background()) {
 		var game objects.Game
 		cursor.Decode(&game)
@@ -65,6 +69,12 @@ func saveGameHandler(w http.ResponseWriter, r *http.Request) {
 	if err == nil {
 		fmt.Println(ob)
 	}
+	// user, err := GetUser(ob.Player.Username)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	return
+	// }
+	// fmt.Println(user)
 	formInBytes, _ := json.Marshal(ob)
 	if err := kafka.Push(nil, formInBytes); err != nil {
 		log.Panic(err)

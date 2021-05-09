@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"net/http"
 	"os"
 
@@ -15,9 +14,7 @@ var kafkaTopic string
 var kafkaBrokerId string
 
 func main() {
-	if err := godotenv.Load(); err != nil {
-		log.Print("No .env file found")
-	}
+	godotenv.Load()
 
 	mongoClientId := os.Getenv("MONGO_CLIENT_ID")
 	mongo.ConfigureMongoClient(mongoClientId)
