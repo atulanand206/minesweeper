@@ -4,9 +4,9 @@ import "time"
 
 type (
 	User struct {
+		Id       string `json:"id" bson:"_id"`
 		Username string `json:"username" bson:"username"`
 		Name     string `json:"name" bson:"name"`
-		Rating   int    `json:"rating" bson:"rating"`
 	}
 
 	Config struct {

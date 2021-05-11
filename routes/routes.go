@@ -44,6 +44,8 @@ func Routes() *http.ServeMux {
 }
 
 func getGamesHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set(cors, "*")
+	w.Header().Set(contentTypeKey, contentTypeApplicationJson)
 	values := r.URL.Query()
 	var response []objects.Game
 	config := paramString(values, "config", "Expert")
@@ -57,39 +59,31 @@ func getGamesHandler(w http.ResponseWriter, r *http.Request) {
 		cursor.Decode(&game)
 		response = append(response, game)
 	}
-	w.Header().Set(cors, "*")
-	w.Header().Set(contentTypeKey, contentTypeApplicationJson)
 	json.NewEncoder(w).Encode(response)
 }
 
 func saveGameHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set(cors, "*")
 	decoder := json.NewDecoder(r.Body)
 	var ob objects.Game
 	err := decoder.Decode(&ob)
 	if err == nil {
 		fmt.Println(ob)
 	}
-	// user, err := GetUser(ob.Player.Username)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	return
-	// }
-	// fmt.Println(user)
 	formInBytes, _ := json.Marshal(ob)
 	if err := kafka.Push(nil, formInBytes); err != nil {
 		log.Panic(err)
 	}
-	w.Header().Set(cors, "*")
 }
 
 func newGameHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set(cors, "*")
+	w.Header().Set(contentTypeKey, contentTypeApplicationJson)
 	values := r.URL.Query()
 	rows := paramInt(values, "rows", defaultRows)
 	cols := paramInt(values, "columns", defaultColumns)
 	mins := paramInt(values, "mines", defaultMines)
 	fmt.Println(values)
-	w.Header().Set(cors, "*")
-	w.Header().Set(contentTypeKey, contentTypeApplicationJson)
 	board := mines.GenerateBoard(rows, cols, mins)
 	print2D(board)
 	json.NewEncoder(w).Encode(board)
