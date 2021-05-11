@@ -59,7 +59,22 @@ func getGamesHandler(w http.ResponseWriter, r *http.Request) {
 		cursor.Decode(&game)
 		response = append(response, game)
 	}
+	fmt.Println(getUsernamesFromGames(response))
 	json.NewEncoder(w).Encode(response)
+}
+
+func getUsernamesFromGames(games []objects.Game) []string {
+	usersMap := make(map[string]bool)
+	for _, v := range games {
+		if v.Player.Username != "" {
+			usersMap[v.Player.Username] = true
+		}
+	}
+	usernames := make([]string, 0, len(usersMap))
+	for k := range usersMap {
+		usernames = append(usernames, k)
+	}
+	return usernames
 }
 
 func saveGameHandler(w http.ResponseWriter, r *http.Request) {
