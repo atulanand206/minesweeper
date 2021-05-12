@@ -44,7 +44,7 @@ func Routes() *http.ServeMux {
 }
 
 func getGamesHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set(cors, "*")
+	w.Header().Set(cors, "localhost")
 	w.Header().Set(contentTypeKey, contentTypeApplicationJson)
 	values := r.URL.Query()
 	var response []objects.Game
