@@ -39,12 +39,12 @@ func Routes() *http.ServeMux {
 	router := http.NewServeMux()
 	router.HandleFunc("/game/new", http.HandlerFunc(newGameHandler))
 	router.HandleFunc("/game/save", http.HandlerFunc(saveGameHandler))
-	router.HandleFunc("/games", http.HandlerFunc(getGamesHandler))
+	router.HandleFunc("/games", http.HandlerFunc(getUsersHandler))
 	return router
 }
 
-func getGamesHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set(cors, "localhost")
+func getUsersHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set(cors, "*")
 	w.Header().Set(contentTypeKey, contentTypeApplicationJson)
 	values := r.URL.Query()
 	var response []objects.Game
@@ -59,8 +59,10 @@ func getGamesHandler(w http.ResponseWriter, r *http.Request) {
 		cursor.Decode(&game)
 		response = append(response, game)
 	}
-	fmt.Println(getUsernamesFromGames(response))
-	json.NewEncoder(w).Encode(response)
+	usernames := getUsernamesFromGames(response)
+	fmt.Println(usernames)
+	respon, _ := GetUsers(usernames)
+	json.NewEncoder(w).Encode(respon)
 }
 
 func getUsernamesFromGames(games []objects.Game) []string {
