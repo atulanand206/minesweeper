@@ -7,7 +7,7 @@ type (
 		Id       string `json:"id" bson:"_id"`
 		Username string `json:"username" bson:"username"`
 		Name     string `json:"name" bson:"name"`
-		Rating   string `json:"rating" bson:"rating"`
+		Rating   int    `json:"rating" bson:"rating"`
 	}
 
 	Config struct {
