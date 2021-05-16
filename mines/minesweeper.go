@@ -9,29 +9,29 @@ import (
 
 const (
 	// String to be marked for the mined cell.
-	mine = "*"
-	// String to be marked for the empty cell.
-	empty = " "
+	Mine = "*"
+	// String to be marked for the Empty cell.
+	Empty = " "
 )
 
 // Generate board based on the input count configuration.
 func GenerateBoard(rows int, columns int, mines int) [][]string {
-	board := emptyBoard(rows, columns)
+	board := EmptyBoard(rows, columns)
 	fmt.Println(len(board), len(board[0]))
-	generateMines(board, rows, columns, mines)
-	generateValues(board)
+	GenerateMines(board, rows, columns, mines)
+	GenerateValues(board)
 	return board
 }
 
 // Generate values on the board.
-func generateValues(board [][]string) {
+func GenerateValues(board [][]string) {
 	directions := [][]int{{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}}
 	for i := 0; i < len(board); i++ {
 		for j := 0; j < len(board[i]); j++ {
-			if !isMine(board, i, j) {
+			if !IsMine(board, i, j) {
 				k := 0
 				for _, d := range directions {
-					k += checkMine(board, i+d[0], j+d[1])
+					k += CheckMine(board, i+d[0], j+d[1])
 				}
 				if k != 0 {
 					board[i][j] = strconv.Itoa(k)
@@ -42,31 +42,31 @@ func generateValues(board [][]string) {
 }
 
 // Returns 1 if the coordinate has a mine.
-func checkMine(board [][]string, x int, y int) int {
-	if isMine(board, x, y) {
+func CheckMine(board [][]string, x int, y int) int {
+	if IsMine(board, x, y) {
 		return 1
 	}
 	return 0
 }
 
 // Returns true if the coordinate has a mine.
-func isMine(board [][]string, x int, y int) bool {
+func IsMine(board [][]string, x int, y int) bool {
 	if x < 0 || y < 0 || x >= len(board) || y >= len(board[x]) {
 		return false
 	}
-	return board[x][y] == mine
+	return board[x][y] == Mine
 }
 
 // Generates mines from the randomized mine positions.
-func generateMines(mines [][]string, rows int, columns int, count int) {
-	mp := minePositions(rows, columns, count)
+func GenerateMines(mines [][]string, rows int, columns int, count int) {
+	mp := MinePositions(rows, columns, count)
 	for k := range mp {
-		mines[k/columns][k%columns] = mine
+		mines[k/columns][k%columns] = Mine
 	}
 }
 
 // Generate mines after generating random positions.
-func minePositions(rows int, columns int, count int) map[int]int {
+func MinePositions(rows int, columns int, count int) map[int]int {
 	total := rows * columns
 	mp := make(map[int]int)
 	rand.Seed(time.Now().UnixNano())
@@ -81,12 +81,12 @@ func minePositions(rows int, columns int, count int) map[int]int {
 }
 
 // Generate an empty board from rows and columns count.
-func emptyBoard(rows int, columns int) [][]string {
+func EmptyBoard(rows int, columns int) [][]string {
 	mines := make([][]string, rows)
 	for i := 0; i < rows; i++ {
 		mines[i] = make([]string, columns)
 		for j := range mines[i] {
-			mines[i][j] = empty
+			mines[i][j] = Empty
 		}
 	}
 	return mines
