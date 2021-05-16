@@ -3,12 +3,16 @@ github.com/atulanand206/go-kafka v0.0.1 h1:CPFNEd82JIG8CZi2TavEebwhnFJCsYE6zMOuT
 github.com/atulanand206/go-kafka v0.0.1/go.mod h1:PdGZZpCdJH9kkYFX45w+1wOVI6/2B9JHNG/M4jY6lXQ=
 github.com/atulanand206/go-kafka v0.0.2 h1:j+JERmBaeL296fEr8oVxcwHZ9w6M5k/6tLu6h7D718M=
 github.com/atulanand206/go-kafka v0.0.2/go.mod h1:PdGZZpCdJH9kkYFX45w+1wOVI6/2B9JHNG/M4jY6lXQ=
+github.com/atulanand206/go-kafka v0.0.3 h1:3M6sFbDSU1uNy1GS6ljEwA/ox5K5vhzcUbSnYNR2lxg=
+github.com/atulanand206/go-kafka v0.0.3/go.mod h1:PdGZZpCdJH9kkYFX45w+1wOVI6/2B9JHNG/M4jY6lXQ=
 github.com/atulanand206/go-mongo v0.0.1 h1:ujd0xb0YMQ5nI9nKKmVw3JN+E1/bU8YiQZkvCsmG+Xw=
 github.com/atulanand206/go-mongo v0.0.1/go.mod h1:K49Bi+77bBhceP035yLuQTzFEjtkrozY6tFHnSCmOak=
 github.com/atulanand206/go-mongo v0.0.2 h1:My0KE3sW9XQ1t7gTu8jza+/XnUhfG2jOe/U17MYYdIo=
 github.com/atulanand206/go-mongo v0.0.2/go.mod h1:K49Bi+77bBhceP035yLuQTzFEjtkrozY6tFHnSCmOak=
 github.com/atulanand206/go-mongo v0.0.4 h1:m8WGpFD1+1BZyB1ldN22RPye/MdW6gIgCID0zOgtJl8=
 github.com/atulanand206/go-mongo v0.0.4/go.mod h1:K49Bi+77bBhceP035yLuQTzFEjtkrozY6tFHnSCmOak=
+github.com/atulanand206/go-mongo v0.0.5 h1:Goy5bBDBBHBIjnicK62WMcQllhSYTvN0SoW6m+a8ctM=
+github.com/atulanand206/go-mongo v0.0.5/go.mod h1:K49Bi+77bBhceP035yLuQTzFEjtkrozY6tFHnSCmOak=
 github.com/atulanand206/go-network v0.0.2 h1:PdUNdyN961Fo5FG0R8h28mPEaxqFybPKuwYd2qjugec=
 github.com/atulanand206/go-network v0.0.2/go.mod h1:3APhuP4lZa7fB3oaBp1c/IsR2bZ4u1GoWPtOGRPTC6E=
 github.com/atulanand206/go-network v0.0.3 h1:AcLhVJfvlSP1wgzO0V5bIJfkMJVj0DrmrsR9yIXTNXE=

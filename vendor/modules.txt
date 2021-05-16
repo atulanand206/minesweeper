@@ -1,7 +1,7 @@
-# github.com/atulanand206/go-kafka v0.0.2
+# github.com/atulanand206/go-kafka v0.0.3
 ## explicit
 github.com/atulanand206/go-kafka
-# github.com/atulanand206/go-mongo v0.0.4
+# github.com/atulanand206/go-mongo v0.0.5
 ## explicit
 github.com/atulanand206/go-mongo
 # github.com/atulanand206/go-network v0.0.7
