@@ -40,7 +40,7 @@ func Routes() *http.ServeMux {
 	// Interceptor chain for attaching to the requests.
 	chain := net.MiddlewareChain{
 		net.ApplicationJsonInterceptor(),
-		// net.AuthenticationInterceptor(),
+		net.AuthenticationInterceptor(),
 	}
 
 	// Interceptor chain with only GET method.
@@ -79,17 +79,17 @@ func HandlerGetUsers(w http.ResponseWriter, r *http.Request) {
 		var game objects.Game
 		cursor.Decode(&game)
 		// Print the decoded game for the logs.
-		fmt.Println(game)
+		// fmt.Println(game)
 		games = append(games, game)
 	}
 	// Usernames associated with the games.
 	usernames := GetUsernamesFromGames(games)
 	// Print the usernames for logs.
-	fmt.Println(usernames)
+	// fmt.Println(usernames)
 	// Find the users from the usernames.
 	response, _ := GetUsers(usernames, r.Header)
 	// Print the users for logs.
-	fmt.Println(response)
+	// fmt.Println(response)
 	// Returns the users as a json response.
 	json.NewEncoder(w).Encode(response)
 }
