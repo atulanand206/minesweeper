@@ -2,7 +2,14 @@
 
 The famous game since the early days of Microsoft where you have to flag the cells with mine while opening the cells with value and get the highest score possible.
 
-### Microservices Ecosystem
+## Learning outcomes
+- Create random board configuration using current time as the seed pivot.
+- Publishing the save request to a kafka topic instead of processing with the database to prevent overhead.
+- Using chain of RESTful requests and return resultant data.
+- Configure services like Mongo, Kafka before using them in Http routes.
+- Prevent processing of network requests in case of error conditions.
+
+## Microservices Ecosystem
 This repository is part of a larger ecosystem of microservices each serving it's purpose in bring Minesweeper to life.
 
 - [Web Services](https://github.com/atulanand206/minesweeper)

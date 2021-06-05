@@ -5,6 +5,8 @@ github.com/atulanand206/go-kafka v0.0.2 h1:j+JERmBaeL296fEr8oVxcwHZ9w6M5k/6tLu6h
 github.com/atulanand206/go-kafka v0.0.2/go.mod h1:PdGZZpCdJH9kkYFX45w+1wOVI6/2B9JHNG/M4jY6lXQ=
 github.com/atulanand206/go-kafka v0.0.3 h1:3M6sFbDSU1uNy1GS6ljEwA/ox5K5vhzcUbSnYNR2lxg=
 github.com/atulanand206/go-kafka v0.0.3/go.mod h1:PdGZZpCdJH9kkYFX45w+1wOVI6/2B9JHNG/M4jY6lXQ=
+github.com/atulanand206/go-kafka v0.0.5 h1:hyEpq+2Z1x7BbjeBpddQ7ktNhXRMbA9GSERE8bKVl3Q=
+github.com/atulanand206/go-kafka v0.0.5/go.mod h1:PdGZZpCdJH9kkYFX45w+1wOVI6/2B9JHNG/M4jY6lXQ=
 github.com/atulanand206/go-mongo v0.0.1 h1:ujd0xb0YMQ5nI9nKKmVw3JN+E1/bU8YiQZkvCsmG+Xw=
 github.com/atulanand206/go-mongo v0.0.1/go.mod h1:K49Bi+77bBhceP035yLuQTzFEjtkrozY6tFHnSCmOak=
 github.com/atulanand206/go-mongo v0.0.2 h1:My0KE3sW9XQ1t7gTu8jza+/XnUhfG2jOe/U17MYYdIo=
@@ -13,6 +15,8 @@ github.com/atulanand206/go-mongo v0.0.4 h1:m8WGpFD1+1BZyB1ldN22RPye/MdW6gIgCID0z
 github.com/atulanand206/go-mongo v0.0.4/go.mod h1:K49Bi+77bBhceP035yLuQTzFEjtkrozY6tFHnSCmOak=
 github.com/atulanand206/go-mongo v0.0.5 h1:Goy5bBDBBHBIjnicK62WMcQllhSYTvN0SoW6m+a8ctM=
 github.com/atulanand206/go-mongo v0.0.5/go.mod h1:K49Bi+77bBhceP035yLuQTzFEjtkrozY6tFHnSCmOak=
+github.com/atulanand206/go-mongo v0.0.6 h1:02R2SeGuJ3BJoqOTm8alt/uGW8EDZPIWtowa8XZtTdE=
+github.com/atulanand206/go-mongo v0.0.6/go.mod h1:K49Bi+77bBhceP035yLuQTzFEjtkrozY6tFHnSCmOak=
 github.com/atulanand206/go-network v0.0.2 h1:PdUNdyN961Fo5FG0R8h28mPEaxqFybPKuwYd2qjugec=
 github.com/atulanand206/go-network v0.0.2/go.mod h1:3APhuP4lZa7fB3oaBp1c/IsR2bZ4u1GoWPtOGRPTC6E=
 github.com/atulanand206/go-network v0.0.3 h1:AcLhVJfvlSP1wgzO0V5bIJfkMJVj0DrmrsR9yIXTNXE=
@@ -31,6 +35,8 @@ github.com/atulanand206/go-network v0.1.3 h1:JDFh/Lz9AsHxUn4RAvLc4Shza0Ew5crAKw1
 github.com/atulanand206/go-network v0.1.3/go.mod h1:3APhuP4lZa7fB3oaBp1c/IsR2bZ4u1GoWPtOGRPTC6E=
 github.com/atulanand206/go-network v0.1.4 h1:9N+0bT+06J1dW7gikDm8g3aW5s4T4BR+BLvat4hNlCY=
 github.com/atulanand206/go-network v0.1.4/go.mod h1:3APhuP4lZa7fB3oaBp1c/IsR2bZ4u1GoWPtOGRPTC6E=
+github.com/atulanand206/go-network v0.1.5 h1:x0uPbklmrVA1SpP5XFhE9u5kC41lsbdrvZSsXFfLbTo=
+github.com/atulanand206/go-network v0.1.5/go.mod h1:3APhuP4lZa7fB3oaBp1c/IsR2bZ4u1GoWPtOGRPTC6E=
 github.com/aws/aws-sdk-go v1.34.28 h1:sscPpn/Ns3i0F4HPEWAVcwdIRaZZCuL7llJ2/60yPIk=
 github.com/aws/aws-sdk-go v1.34.28/go.mod h1:H7NKnBqNVzoTJpGfLrQkkD+ytBA93eiDYi/+8rV9s48=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
