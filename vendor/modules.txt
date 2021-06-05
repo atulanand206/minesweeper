@@ -4,7 +4,7 @@ github.com/atulanand206/go-kafka
 # github.com/atulanand206/go-mongo v0.0.5
 ## explicit
 github.com/atulanand206/go-mongo
-# github.com/atulanand206/go-network v0.1.2
+# github.com/atulanand206/go-network v0.1.4
 ## explicit
 github.com/atulanand206/go-network
 # github.com/aws/aws-sdk-go v1.34.28
